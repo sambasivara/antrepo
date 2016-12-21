@@ -1,0 +1,12 @@
+<project name="sampleproject" basedir="." default="compile">
+	<target name="clean">
+		<delete dir="mo2/"/>
+	</target>
+	<target name="prepare" depends="clean">
+		<mkdir dir="mo2/dist/class"/>
+	</target>
+	<target name="compile" depends="prepare">
+        	<javac srcdir="src" destdir="mo2/dist/class"/>
+		<jar destfile="mo2/dist/module2.jar"/>
+	</target>
+</project>

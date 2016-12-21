@@ -1,0 +1,22 @@
+<project name="sampleproject" basedir="." default="warmaking">
+	<target name="clean">
+		<delete dir="mo1"/>
+		<delete dir="mo2"/>
+	</target>
+	<target name="module1" depends="clean">
+	<ant antfile="module1/modu.xml" dir="."/>
+	</target>
+	<target name="module2" depends="module1">
+	<ant antfile="module2/modu2.xml" dir="."/>
+	</target>
+	<target name="warmaking" depends="module2">
+		<jar destfile="final.war">
+		<fileset dir="mo1">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="mo2">
+			<include name="**/*.jar"/>
+		</fileset>
+		</jar>
+	</target>
+</project>
